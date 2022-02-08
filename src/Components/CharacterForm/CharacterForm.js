@@ -15,6 +15,7 @@ const CharacterForm = (props) => {
   const saveCharacterInfoHandler = (event) => {
     event.preventDefault();
     const charData = {
+      id: Math.random(),
       name: characterName,
       age: characterAge
     }

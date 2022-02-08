@@ -7,7 +7,7 @@ const CharacterList = (props) => {
   return (
     <ul>
       {props.items.map((data) => (
-        <CharacterDetails name={data.name} age={data.age} />
+        <CharacterDetails name={data.name} age={data.age} key={data.id} />
       ))}
     </ul>
   );
