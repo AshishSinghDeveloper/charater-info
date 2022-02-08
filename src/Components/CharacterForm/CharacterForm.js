@@ -14,6 +14,12 @@ const CharacterForm = (props) => {
 
   const saveCharacterInfoHandler = (event) => {
     event.preventDefault();
+    if(characterName.length === 0 || characterAge.length === 0){
+      return <div>Please enter a valid name and age (non-empty values</div>;
+    }
+    if(characterAge < 1){
+      return "Please enter a valid age (>0)";
+    }
     const charData = {
       id: Math.random(),
       name: characterName,
