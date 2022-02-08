@@ -1,24 +1,19 @@
-import {useState} from 'react';
-import './App.css';
-import CharacterForm from './Components/CharacterForm/CharacterForm';
-import CharacterList from './Components/CharacterList/CharacterList';
+import { useState } from "react";
+import "./App.css";
+import CharacterForm from "./Components/CharacterForm/CharacterForm";
+import CharacterList from "./Components/CharacterList/CharacterList";
 
 function App() {
-  const[charInfo, setCharInfo] = useState('');
+  const [charInfo, setCharInfo] = useState('');
   const onformValueHandler = (enteredData) => {
-    console.log(enteredData.name, 'name');
-    console.log(enteredData.age, 'age');
     setCharInfo((prevState) => {
-        return{
-          ...prevState,
-          enteredData
-        }
+      return [enteredData, ...prevState];
     });
-  }
+  };
   return (
     <div className="App">
       <CharacterForm onformValues={onformValueHandler} />
-      <CharacterList items={charInfo.enteredData}/>
+      {charInfo.length > 0 && <CharacterList items={charInfo} />}
     </div>
   );
 }

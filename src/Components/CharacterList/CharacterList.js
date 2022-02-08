@@ -1,9 +1,16 @@
+import CharacterDetails from "./CharacterDetails";
+
 const CharacterList = (props) => {
-  const charInfo = props.items;
-  //charInfo.Map(num => )
-   return <div>
-    <h1>{props.items}</h1>
-  </div>;
+  // if(props.items.enteredData.length === 0){
+  //   return <div>No character found</div>
+  //}
+  return (
+    <ul>
+      {props.items.map((data) => (
+        <CharacterDetails name={data.name} age={data.age} />
+      ))}
+    </ul>
+  );
 };
 
 export default CharacterList;
