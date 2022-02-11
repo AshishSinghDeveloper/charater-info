@@ -6,15 +6,14 @@ import AddUser from "./Components/UI/Users/AddUser";
 
 function App() {
   const [charInfo, setCharInfo] = useState('');
-  const onformValueHandler = (enteredData) => {
+  const formValueHandler = (enteredData) => {
     setCharInfo((prevState) => {
       return [enteredData, ...prevState];
     });
   };
   return (
     <div>
-      <CharacterForm  onformValues={onformValueHandler} />
-      <AddUser />
+      <CharacterForm  onformValues={formValueHandler} />
       {charInfo.length > 0 && <CharacterList items={charInfo} />}
     </div>
   );
