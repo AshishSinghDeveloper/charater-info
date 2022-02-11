@@ -10,8 +10,8 @@ const CharacterList = (props) => {
     <Card className={styles.users}>
       <ul>
         {props.items.map((data) => (
-          <li>
-            <CharacterDetails name={data.name} age={data.age} key={data.id} />
+          <li key={data.id}>
+            <CharacterDetails name={data.name} age={data.age}  />
           </li>
         ))}
       </ul>

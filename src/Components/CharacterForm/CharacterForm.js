@@ -22,14 +22,16 @@ const CharacterForm = (props) => {
     if (characterName.trim().length === 0 || characterAge.trim().length === 0) {
       setError({
         title: "Invalid input",
-        message: "Please enter a valid name and age (non-empty values",
+        message: "Please enter a valid name and age (non-empty values)",
       });
+      return;
     }
     if (+characterAge < 1) {
       setError({
         title: "Invalid age",
         message: "Please enter a valid age (> 0)",
       });
+      return;
     }
     const charData = {
       id: Math.random(),
