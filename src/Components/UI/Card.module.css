@@ -1,0 +1,11 @@
+.card {
+  /* color: black;
+  font-size: larger;
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  text-align: left; */
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  border-radius: 10px;
+}

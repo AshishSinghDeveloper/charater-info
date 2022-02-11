@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import CharacterForm from "./Components/CharacterForm/CharacterForm";
+import CharacterList from "./Components/CharacterList/CharacterList";
+import AddUser from "./Components/UI/Users/AddUser";
 
 function App() {
+  const [charInfo, setCharInfo] = useState('');
+  const formValueHandler = (enteredData) => {
+    setCharInfo((prevState) => {
+      return [enteredData, ...prevState];
+    });
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <CharacterForm  onformValues={formValueHandler} />
+      {charInfo.length > 0 && <CharacterList items={charInfo} />}
     </div>
   );
 }
