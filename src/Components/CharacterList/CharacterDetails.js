@@ -1,7 +1,9 @@
+import Wrapper from "../Helper/Wrapper";
+
 const CharacterDetails = (props) => {
-  return <div>
+  return <Wrapper>
     <span>{props.name} ({props.age} years old)</span>
-  </div>
+  </Wrapper>
 }
 
 export default CharacterDetails;

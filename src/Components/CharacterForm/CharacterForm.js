@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Wrapper from "../Helper/Wrapper";
 import Button from "../UI/Button/Button";
 import Card from "../UI/Card";
 import ErrorModal from "../UI/ErrorModal";
@@ -47,7 +48,7 @@ const CharacterForm = (props) => {
     setError(null);
   };
   return (
-    <div>
+    <Wrapper>
       {error && (
         <ErrorModal
           title={error.title}
@@ -74,7 +75,7 @@ const CharacterForm = (props) => {
           <Button type="submit">Add Character</Button>
         </form>
       </Card>
-    </div>
+    </Wrapper>
   );
 };
 
