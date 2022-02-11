@@ -1,5 +1,7 @@
 import { useState } from "react";
-import "./CharacterForm.css";
+import Button from "../UI/Button/Button";
+import Card from "../UI/Card";
+import style from "./CharacterForm.module.css";
 
 const CharacterForm = (props) => {
   const [characterName, setCharacterName] = useState("");
@@ -31,31 +33,25 @@ const CharacterForm = (props) => {
     setCharacterAge("");
   };
   return (
-    <form onSubmit={saveCharacterInfoHandler}>
-      <div className="character-form__controls">
-        <div className="character-form__control">
-          <label>Character</label>
-          <input
-            type="text"
-            value={characterName}
-            onChange={characterNameChangeHandler}
-          />
-        </div>
-        </div>
-        <div className="character-form__controls">
-        <div className="character-form__control">
-          <label>Age (in years)</label>
-          <input
-            type="number"
-            value={characterAge}
-            onChange={characterAgeChangeHandler}
-          />
-        </div>
-      </div>
-      <div className="character-form__control">
-        <button type="submit">Save</button>
-      </div>
-    </form>
+    <Card className={style.input}>
+      <form onSubmit={saveCharacterInfoHandler}>
+        <label htmlFor="characterName">Character</label>
+        <input
+          id="characterName"
+          type="text"
+          value={characterName}
+          onChange={characterNameChangeHandler}
+        />
+        <label htmlFor="characterAge">Age (in years)</label>
+        <input
+          id="characterAge"
+          type="number"
+          value={characterAge}
+          onChange={characterAgeChangeHandler}
+        />
+        <Button type="submit">Add Character</Button>
+      </form>
+    </Card>
   );
 };
 

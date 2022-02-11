@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import CharacterForm from "./Components/CharacterForm/CharacterForm";
 import CharacterList from "./Components/CharacterList/CharacterList";
-import IntroModal from "./Components/Modal/IntroModal";
+import AddUser from "./Components/UI/Users/AddUser";
 
 function App() {
   const [charInfo, setCharInfo] = useState('');
@@ -12,8 +12,9 @@ function App() {
     });
   };
   return (
-    <div className="character-app">
+    <div>
       <CharacterForm  onformValues={onformValueHandler} />
+      <AddUser />
       {charInfo.length > 0 && <CharacterList items={charInfo} />}
     </div>
   );
