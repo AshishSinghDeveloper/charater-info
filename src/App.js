@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import CharacterForm from "./Components/CharacterForm/CharacterForm";
 import CharacterList from "./Components/CharacterList/CharacterList";
@@ -12,10 +12,10 @@ function App() {
     });
   };
   return (
-    <div>
+    <React.Fragment>
       <CharacterForm  onformValues={formValueHandler} />
       {charInfo.length > 0 && <CharacterList items={charInfo} />}
-    </div>
+    </React.Fragment>
   );
 }
 

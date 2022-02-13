@@ -1,24 +1,19 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
+import Wrapper from "../Helper/Wrapper";
 import Button from "../UI/Button/Button";
 import Card from "../UI/Card";
 import ErrorModal from "../UI/ErrorModal";
 import style from "./CharacterForm.module.css";
 
 const CharacterForm = (props) => {
-  const [characterName, setCharacterName] = useState("");
-  const [characterAge, setCharacterAge] = useState("");
+  const enteredcharacterName = useRef();
+  const enteredcharacterAge = useRef();
   const [error, setError] = useState();
-
-  const characterNameChangeHandler = (event) => {
-    setCharacterName(event.target.value);
-  };
-
-  const characterAgeChangeHandler = (event) => {
-    setCharacterAge(event.target.value);
-  };
 
   const saveCharacterInfoHandler = (event) => {
     event.preventDefault();
+    const characterName = enteredcharacterName.current.value;
+    const characterAge = enteredcharacterAge.current.value;
     if (characterName.trim().length === 0 || characterAge.trim().length === 0) {
       setError({
         title: "Invalid input",
@@ -39,15 +34,15 @@ const CharacterForm = (props) => {
       age: characterAge,
     };
     props.onformValues(charData);
-    setCharacterName("");
-    setCharacterAge("");
+    enteredcharacterName.current.value = '';
+    enteredcharacterAge.current.value = '';
   };
 
   const errorHandler = () => {
     setError(null);
   };
   return (
-    <div>
+    <Wrapper>
       {error && (
         <ErrorModal
           title={error.title}
@@ -61,20 +56,18 @@ const CharacterForm = (props) => {
           <input
             id="characterName"
             type="text"
-            value={characterName}
-            onChange={characterNameChangeHandler}
+            ref= {enteredcharacterName}
           />
           <label htmlFor="characterAge">Age (in years)</label>
           <input
             id="characterAge"
             type="number"
-            value={characterAge}
-            onChange={characterAgeChangeHandler}
+            ref={enteredcharacterAge}
           />
           <Button type="submit">Add Character</Button>
         </form>
       </Card>
-    </div>
+    </Wrapper>
   );
 };
 
